@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+ {% block title %}
+    <title>layout</title>
+  {% endblock %}
+{% block content %}
+<h2 style="text-align:center;">Show Student</h2>
+<table class="table table-dark">
+    <tr>
+        <th>Student Id</th>
+        <th>Name</th>
+        <th>Course</th>
+        <th>College Name</th>
+        <th>City</th>
+        <th>Action</th>
+        <th>Update</th>
+    </tr>
+    {% for stu in student %}
+    <tr>
+        <td>{{stu.stu_id}}</td>
+        <td>{{stu.name}}</td>
+        <td>{{stu.course}}</td>
+        <td>{{stu.college}}</td>
+        <td>{{stu.city}}</td>
+        <td><a href="{% url 'delete_stu' stu.stu_id %}"><button class="btn btn-danger">Delete</button></a></td>
+<td><a href="{% url 'update_stu' stu.stu_id %}"><button class="btn btn-warning">Update</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+    {% endblock %}
